@@ -32,26 +32,5 @@
         "Cost": 3
       }
     ]
-  },
-  "NPC": {
-    "Sequence": [
-      {
-        "Name": "Repair",
-        "Key": "C",
-        "Requirement": "Durability% < 35",
-        "PathFilename": "1_Gnome_Vendor.json",
-        "Cost": 6
-      },
-      {
-        "Name": "Sell",
-        "Key": "C",
-        "Requirements": [
-          "BagFull",
-          "BagGreyItem"
-        ],
-        "PathFilename": "1_Gnome_Vendor.json",
-        "Cost": 6
-      }
-    ]
   }
 }

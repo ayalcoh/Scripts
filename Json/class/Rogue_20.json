@@ -1,13 +1,33 @@
 {
   "ClassName": "Rogue",
-  "PathFilename": "10_Gnome.json",
+  "PathFilename": "10_Gnome.json", 
+
   "Pull": {
     "Sequence": [
       {
-        "Name": "Shoot",
-        "Key": "9",
-        "AfterCastDelay": 1000,
-        "AfterCastWaitMeleeRange": false
+        "Name": "Sprint",
+        "Key": "F1",
+        "WhenUsable": true,
+        "Requirements": [
+          "!Stealth",
+          "!InMeleeRange"
+        ]
+      },
+      {
+        "Name": "Stealth",
+        "Key": "F11",
+        "Requirements": [
+          "!Stealth",
+          "!InMeleeRange"
+        ]
+      },
+      {
+        "Name": "Cheap Shot",
+        "Key": "2",
+        "Requirements": [
+          "Stealth",
+          "InMeleeRange"
+        ]
       }
     ]
   },
@@ -21,6 +41,13 @@
         //"Requirement": "TargetCastingSpell:9053,11443"
       },
       {
+        "Name": "Blade Flurry",
+        "Key": "F2",
+        "WhenUsable": true,
+        "Requirement": "MobCount > 1"
+      },
+
+      {
         "Name": "Evasion",
         "Key": 5,
         "WhenUsable": true,
@@ -31,7 +58,7 @@
         "Key": "4",
         "Requirements": [
           "!Slice and Dice",
-          "Combo Point>0"
+          "Combo Point>1"
         ]
       },
       {
@@ -39,13 +66,27 @@
         "Key": "3",
         "Requirements": [
           "TargetHealth%>20",
-          "Combo Point>1"
+          "Combo Point>3"
         ]
       },
       {
         "Name": "Sinister Strike",
         "Key": "2"
       },
+      {
+        "Name": "Riposte",
+        "Key": "1",
+        "WhenUsable": true
+      },
+            {
+        "Name": "Gouge",
+        "Key": "7",
+        "WhenUsable": true,
+        "Requirements": [
+          "Health%<25"
+        ]
+      },
+      
       {
         "Name": "AutoAttack"
       },
@@ -70,20 +111,6 @@
         "Name": "Food",
         "Key": "N1",
         "Requirement": "Health%<50"
-      },
-      {
-        "Name": "poisonmh",
-        "HasCastbar": true,
-        "Key": "N2",
-        "Requirement": "!HasMainHandEnchant",
-        "AfterCastAuraExpected": true
-      },
-      {
-        "Name": "poisonoh",
-        "HasCastbar": true,
-        "Key": "N3",
-        "Requirement": "!HasOffHandEnchant",
-        "AfterCastAuraExpected": true
       },
       {
         "Name": "openstuff",

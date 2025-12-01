@@ -1,7 +1,7 @@
 {
   "ClassName": "Hunter",
   //"Mode": "AttendedGrind",
-  //"PathFilename": "1_Gnome.json",
+  //"PathFilename": "01-04_Durotar_Valley of Trials.json",
   "Wait": {
     "Sequence": [
       {
@@ -13,7 +13,7 @@
   },
   "Paths": [
     {
-      "PathFilename": "1-5_Gnome.json",
+      "PathFilename": "01-04_Durotar_Valley of Trials.json",
       "PathThereAndBack": false,
       "PathReduceSteps": false,
       "Requirements": [
@@ -21,7 +21,7 @@
       ]
     },
     {
-      "PathFilename": "_pack\\1-20\\Dwarf.Gnome\\1-4_Dun Morogh.json",
+      "PathFilename": "_pack\\1-20\\Troll.Orc\\01-04_Durotar_Valley of Trials.json",
       "PathThereAndBack": true,
       "PathReduceSteps": false,
       "Requirements": [
@@ -29,7 +29,7 @@
       ]
     },
     {
-      "PathFilename": "_pack\\1-20\\Dwarf.Gnome\\4-6_Dun Morogh.json",
+      "PathFilename": "_pack\\1-20\\Troll.Orc\\01-04_Durotar_Valley of Trials.json",
       "PathThereAndBack": false,
       "PathReduceSteps": false
     }

@@ -1,12 +1,12 @@
 {
   "ClassName": "Warrior",
-  "PathFilename": "_pack\\1-20\\Troll.Orc\\01-04_Durotar_Valley of Trials.json",
-  "PathThereAndBack": true, 
+  "PathFilename": "_pack\\1-20\\Troll.Orc\\05-07_Durotar_Road.json",
+  "PathThereAndBack": true,
   "Pull": {
     "Sequence": [
       {
         "Name": "Charge",
-        "Key": "3",
+        "Key": "1",
         "WhenUsable": true,
         "Requirement": "SpellInRange:0",
         "AfterCastWaitMeleeRange": true
@@ -22,13 +22,21 @@
         "Requirement": "!Battle Shout"
       },
       {
+        "Name": "Rend",
+        "Key": "3",
+        "WhenUsable": true,
+        "Requirements": [
+          "TargetHealth% > 90",
+          "!Rend"
+        ]
+      },
+      {
         "Name": "Heroic Strike",
         "Key": "2",
         "WhenUsable": true,
         "Requirement": "MainHandSwing > -400",
         "AfterCastWaitSwing": true
       },
-      
       {
         "Name": "AutoAttack"
       },
@@ -43,8 +51,27 @@
       {
         "Name": "Food",
         "Key": "=",
-        "Requirement": "Health%<60",
+        "Requirement": "Health% < 60",
         "Cost": 3
+      }
+    ]
+  },
+  "NPC": {
+    "Sequence": [
+      {
+        "Name": "Repair",
+        "Key": "C",
+        "Requirement": "Durability% < 35",
+        "Cost": 6
+      },
+      {
+        "Name": "Sell",
+        "Key": "C",
+        "Requirements": [
+          "BagFull",
+          "BagGreyItem"
+        ],
+        "Cost": 6
       }
     ]
   }

@@ -6,52 +6,144 @@
   "PathThereAndBack": false,
   "PathReduceSteps": false,
   "IntVariables": {
-    "DOT_MIN_HEALTH%": 35
+    "DOT_MIN_HEALTH%": 35,
+    "Item_Soul_Shard": 6265,
+    "Item_Healthstone": 19004
   },
   "Pull": {
     "Sequence": [
       {
         "Name": "Immolate",
         "Key": "5",
-        "HasCastBar": true
+        "HasCastBar": true,
+        "AfterCastWaitCastbar": true,
+        "DelayAfterCast": 500,
+        "Requirements": [
+          "TargetHealth% > DOT_MIN_HEALTH%"
+        ]
+      },
+      {
+        "Name": "Corruption",
+        "Key": "7",
+        "HasCastBar": true,
+        "AfterCastWaitCastbar": true,
+        "DelayAfterCast": 500,
+        "Requirements": [
+          "TargetHealth% > DOT_MIN_HEALTH%"
+        ]
+      },
+      {
+        "Name": "Curse of Agony",
+        "Key": "1",
+        "HasCastBar": true,
+        "AfterCastWaitCastbar": true,
+        "DelayAfterCast": 500,
+        "Requirements": [
+          "TargetHealth% > DOT_MIN_HEALTH%"
+        ]
+      },
+      {
+        "Name": "Shoot",
+        "Key": "0",
+        "Item": true,
+        "Requirements": [
+          "HasRangedWeapon",
+          "!Shooting",
+          "SpellInRange:1"
+        ]
       }
     ]
   },
   "Combat": {
     "Sequence": [
       {
+        "Name": "Healthstone",
+        "Key": "6",
+        "Item": true,
+        "Requirements": [
+          "Health% < 40",
+          "BagItem:Item_Healthstone"
+        ]
+      },
+      {
+        "Name": "Drain Soul",
+        "Key": "2",
+        "HasCastBar": true,
+        "Requirements": [
+          "TargetHealth% < 25",
+          "!BagItem:Item_Soul_Shard:3",
+          "TargetYieldXP"
+        ]
+      },
+      {
+        "Name": "Fear (3+ mobs)",
+        "Key": "9",
+        "HasCastBar": true,
+        "AfterCastWaitCastbar": true,
+        "Requirements": [
+          "MobCount >= 3",
+          "!Fear"
+        ]
+      },
+      {
+        "Name": "Fear (Emergency)",
+        "Key": "9",
+        "HasCastBar": true,
+        "AfterCastWaitCastbar": true,
+        "Requirements": [
+          "Health% < 30",
+          "!Fear"
+        ]
+      },
+      {
+        "Name": "Tab Target (Multi-mob)",
+        "Key": "Tab",
+        "Requirements": [
+          "MobCount >= 2",
+          "Corruption",
+          "Curse of Agony",
+          "Immolate"
+        ]
+      },
+      {
         "Name": "Immolate",
         "Key": "5",
         "HasCastBar": true,
+        "AfterCastWaitCastbar": true,
+        "DelayAfterCast": 500,
         "Requirements": [
           "TargetHealth% > DOT_MIN_HEALTH%",
           "!Immolate"
         ]
       },
       {
-        "Name": "Curse of Agony",
-        "Key": "1",
-        "Requirements": [
-          "TargetHealth% > DOT_MIN_HEALTH%",
-          "!Curse of Agony"
-        ],
-        "Log": false
-      },
-      {
         "Name": "Corruption",
         "Key": "7",
         "HasCastBar": true,
+        "AfterCastWaitCastbar": true,
+        "DelayAfterCast": 500,
         "Requirements": [
           "TargetHealth% > DOT_MIN_HEALTH%",
           "!Corruption"
         ]
       },
       {
-        "Name": "Shadow Bolt",
-        "Key": "2",
+        "Name": "Curse of Agony",
+        "Key": "1",
         "HasCastBar": true,
-        "Cooldown": 8000
+        "AfterCastWaitCastbar": true,
+        "DelayAfterCast": 500,
+        "Requirements": [
+          "TargetHealth% > DOT_MIN_HEALTH%",
+          "!Curse of Agony"
+        ]
       },
+//      {
+//        "Name": "Shadow Bolt",
+//        "Key": "2",
+//        "HasCastBar": true,
+   //     "Cooldown": 8000
+  //    },
       {
         "Name": "Shoot",
         "Key": "0",
@@ -108,12 +200,34 @@
         "AfterCastAuraExpected": true
       },
       {
+        "Name": "Create Healthstone",
+        "Key": "F11",
+        "HasCastBar": true,
+        "Requirements": [
+          "BagItem:Item_Soul_Shard",
+          "!BagItem:Item_Healthstone"
+        ],
+        "AfterCastWaitCastbar": true,
+        "AfterCastWaitBag": true
+      },
+      {
         "Name": "Life Tap",
         "Key": "8",
         "Charge": 2,
         "Requirements": [
-          "Health% > 70",
-          "Mana% < 60"
+          "!InCombat",
+          "Health% > 80",
+          "Mana% < 85"
+        ]
+      },
+      {
+        "Name": "Life Tap (Combat)",
+        "Key": "8",
+        "Charge": 1,
+        "Requirements": [
+          "InCombat",
+          "Health% > 60",
+          "Mana% < 40"
         ]
       }
     ]
@@ -124,16 +238,6 @@
         "Name": "Repair",
         "Key": "C",
         "Requirement": "Durability% < 35",
-        "PathFilename": "5_Gnome_Vendor.json",
-        "Cost": 6
-      },
-      {
-        "Name": "Sell",
-        "Key": "C",
-        "Requirements": [
-          "BagFull",
-          "BagGreyItem"
-        ],
         "PathFilename": "5_Gnome_Vendor.json",
         "Cost": 6
       }

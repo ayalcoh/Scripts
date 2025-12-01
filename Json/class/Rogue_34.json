@@ -1,0 +1,260 @@
+{
+  "ClassName": "Rogue",
+  "PathFilename": "10_Gnome.json",
+  "PathThereAndBack": true,
+  "PathReduceSteps": false,
+  
+  "Loot": true,
+  "Skin": true,           // ⭐ SKINNING ENABLED
+  "Herb": false,
+  "Mine": false,
+  "UseMount": false,      // Set to true at level 40 when you get mount
+  
+  "NPCMaxLevels_Above": 2,
+  "NPCMaxLevels_Below": 7,
+  "CheckTargetGivesExp": true,
+  
+  "AllowPvP": false,      // Set true if you want to attack Alliance players
+  
+  "Blacklist": [],        // Add problematic NPC IDs here: ["1234", "5678"]
+  "TargetMask": "Normal, Trivial, Rare",
+  
+  "Pull": {
+    "Sequence": [
+      {
+        "Name": "Stealth",
+        "Key": "8",
+        "Requirement": "!Stealth && !InCombat"
+      },
+      {
+        "Name": "Cheap Shot",
+        "Key": "4",
+        "Requirement": "Stealth && InMeleeRange"
+      },
+      {
+        "Name": "Approach",
+        "Log": false
+      }
+    ]
+  },
+  
+  "Combat": {
+    "Sequence": [
+      {
+        "Name": "Healing Potion",
+        "Key": "F1",
+        "Cooldown": 120000,
+        "Requirement": "Health% < 25"
+      },
+      {
+        "Name": "Thistle Tea",
+        "Key": "F2",
+        "Cooldown": 300000,
+        "Requirements": ["Energy < 20", "TargetHealth% > 40"]
+      },
+      {
+        "Name": "Vanish Emergency",
+        "Key": "9",
+        "Cooldown": 300000,
+        "Requirements": ["Health% < 15", "MobCount > 1"]
+      },
+      {
+        "Name": "Sprint Escape",
+        "Key": "N4",
+        "Cooldown": 300000,
+        "Requirements": ["Health% < 20", "!InMeleeRange"]
+      },
+      {
+        "Name": "Evasion",
+        "Key": "7",
+        "Cooldown": 120000,
+        "Requirements": ["Health% < 35", "MobCount > 1 || TargetHealth% > 50"]
+      },
+      {
+        "Name": "Blade Flurry",
+        "Key": "N2",
+        "Cooldown": 120000,
+        "Requirement": "MobCount > 1"
+      },
+      {
+        "Name": "Adrenaline Rush",
+        "Key": "N3",
+        "Cooldown": 300000,
+        "Requirements": ["Energy < 30", "TargetHealth% > 60"]
+      },
+      {
+        "Name": "Gouge",
+        "Key": "N5",
+        "Cooldown": 10000,
+        "Requirements": ["Health% < 30", "Energy > 45"]
+      },
+      {
+        "Name": "Blind",
+        "Key": "N6",
+        "Cooldown": 300000,
+        "Requirements": ["Health% < 20", "MobCount > 1"]
+      },
+      {
+        "Name": "Kick",
+        "Key": "5",
+        "Cooldown": 10000,
+        "UseWhenTargetIsCasting": true,
+        "Requirement": "InMeleeRange"
+      },
+      {
+        "Name": "Riposte",
+        "Key": "6",
+        "WhenUsable": true,
+        "Requirement": "InMeleeRange"
+      },
+      {
+        "Name": "Slice and Dice",
+        "Key": "3",
+        "Cooldown": 3000,
+        "Requirements": [
+          "!Slice and Dice",
+          "Combo Point > 1",
+          "Energy > 25",
+          "TargetHealth% > 30"
+        ]
+      },
+      {
+        "Name": "Eviscerate 5CP",
+        "Key": "2",
+        "Requirements": [
+          "Combo Point > 4",
+          "Energy > 35"
+        ]
+      },
+      {
+        "Name": "Eviscerate 3CP Finish",
+        "Key": "2",
+        "Requirements": [
+          "Combo Point > 2",
+          "TargetHealth% < 25",
+          "Energy > 35"
+        ]
+      },
+      {
+        "Name": "Sinister Strike",
+        "Key": "1",
+        "Requirement": "Energy > 45"
+      },
+      {
+        "Name": "AutoAttack",
+        "Requirement": "!AutoAttacking"
+      },
+      {
+        "Name": "Approach",
+        "Requirement": "!InMeleeRange",
+        "Log": false
+      }
+    ]
+  },
+  
+  "Adhoc": {
+    "Sequence": [
+      {
+        "Name": "Apply Instant Poison MH",
+        "Key": "N1",
+        "Cooldown": 300000,
+        "Requirement": "!HasMainHandEnchant"
+      },
+      {
+        "Name": "Apply Instant Poison OH",
+        "Key": "N7",
+        "Cooldown": 300000,
+        "Requirement": "!HasOffHandEnchant"
+      },
+      {
+        "Name": "Sprint Movement",
+        "Key": "N4",
+        "Cooldown": 300000,
+        "Requirement": "!InCombat && !Mounted"
+      },
+      {
+        "Name": "Food",
+        "Key": "0",
+        "Requirement": "Health% < 55"
+      },
+      {
+        "Name": "Bandage",
+        "Key": "-",
+        "Cooldown": 60000,
+        "Requirements": ["Health% < 45", "FoodCount == 0", "!InCombat"]
+      }
+    ]
+  },
+  
+  "Parallel": {
+    "Sequence": [
+      {
+        "Name": "Food",
+        "Key": "0",
+        "Requirement": "Health% < 60"
+      }
+    ]
+  },
+  
+  "NPC": {
+    "Sequence": [
+      {
+        "Name": "Repair",
+        "Key": "C",
+        "Requirement": "Durability% < 35",
+        "Cost": 6
+      },
+      {
+        "Name": "Sell",
+        "Key": "C",
+        "Requirements": ["BagFull", "BagGreyItem"],
+        "Cost": 6
+      },
+      {
+        "Name": "Buy Food",
+        "Key": "C",
+        "Requirement": "FoodCount < 1",
+        "Cost": 6
+      }
+    ]
+  },
+  
+  "Wait": {
+    "Sequence": [
+      {
+        "Name": "Eating",
+        "Cost": 5,
+        "Requirement": "Food && Health% < 99"
+      },
+      {
+        "Name": "Low HP Regen",
+        "Cost": 19,
+        "Requirements": ["FoodCount == 0", "Health% < 90"]
+      }
+    ]
+  },
+  
+  "Flee": {
+    "Sequence": [
+      {
+        "Name": "Flee Trigger",
+        "Requirement": "(MobCount > 2 && Health% < 40) || Health% < 15"
+      },
+      {
+        "Name": "Vanish",
+        "Key": "9",
+        "Requirement": "Health% < 20"
+      },
+      {
+        "Name": "Sprint",
+        "Key": "N4",
+        "Requirement": "Health% < 30"
+      },
+      {
+        "Name": "Healing Potion",
+        "Key": "F1",
+        "Requirement": "Health% < 25"
+      }
+    ]
+  }
+}
